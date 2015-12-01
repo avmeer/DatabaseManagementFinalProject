@@ -122,7 +122,7 @@ function getPoints() {
   <?php
 
     // Connecting, selecting database
-$dbconn = pg_connect("host=flowers.mines.edu dbname=csci403 user=avanderm password=oldpassword")
+$dbconn = pg_connect("host=flowers.mines.edu dbname=csci403 user= password=")
     or die('Could not connect: ' . pg_last_error());
 
 // Performing SQL query
