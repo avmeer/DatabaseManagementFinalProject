@@ -55,7 +55,7 @@ var map, heatmap;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 7,
-    center: {lat: 39.74, lng: -104.99},
+    center: {lat: 39.04, lng: -104.99},
     mapTypeId: google.maps.MapTypeId.SATELLITE
   });
   heatmap = new google.maps.visualization.HeatmapLayer({

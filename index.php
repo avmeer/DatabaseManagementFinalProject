@@ -11,17 +11,22 @@ $dbconn = pg_connect("host=flowers.mines.edu dbname=csci403 user=avanderm passwo
     <meta charset="utf-8">
     <title>Heatmaps</title>
     <style>
+    body {
+    overflow:hidden;
+}
     iframe{
-    	margin: 0 auto;
-  		display:block;
+ position: absolute;
+	top: 0px;
+	left: 0px;
   
-		  height:90vh;
-		  width:80%;
+		  height:100vh;
+		  width:100vw;
     }
     #sidebar{
     position: absolute;
 	top: 50px;
 	left: 0px;
+	background-color: white;
 
 	width: 130px;
     }
