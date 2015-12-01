@@ -11,13 +11,29 @@ $dbconn = pg_connect("host=flowers.mines.edu dbname=csci403 user=avanderm passwo
     <meta charset="utf-8">
     <title>Heatmaps</title>
     <style>
+    iframe{
+    	margin: 0 auto;
+  		display:block;
+  
+		  height:90vh;
+		  width:80%;
+    }
+    #sidebar{
+    position: absolute;
+	top: 50px;
+	left: 0px;
 
+	width: 130px;
+    }
     </style>
   </head>
 
   <body>
 
-  <form action="map.php" method="post">
+  <iframe name="my_frame" src="map.php">
+  	</iframe>
+
+  <form target="my_frame" action="map.php" method="post" id="sidebar">
    <fieldset>
   <legend>Year</legend>
   	<?php
@@ -47,7 +63,7 @@ $dbconn = pg_connect("host=flowers.mines.edu dbname=csci403 user=avanderm passwo
 
 
   	<input type="submit" value="Submit">
-  	<
+  	
 
 
   </body>

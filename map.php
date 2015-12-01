@@ -54,14 +54,21 @@ $dbconn = pg_connect("host=flowers.mines.edu dbname=csci403 user=avanderm passwo
 var map, heatmap;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 6,
+    zoom: 7,
     center: {lat: 39.74, lng: -104.99},
     mapTypeId: google.maps.MapTypeId.SATELLITE
   });
   heatmap = new google.maps.visualization.HeatmapLayer({
     data: getPoints(),
     map: map,
-    radius: 20,
+    radius: 30,
+    dissipating:true,
+    maxIntensity:<?php
+      $query = 'select MAX(max) from peittrei.wxdata_avg';
+      $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+      $line = pg_fetch_array($result, null, PGSQL_ASSOC);
+      echo $line["max"];
+    ?>,
   });
 }
 function toggleHeatmap() {
@@ -95,7 +102,6 @@ function changeOpacity() {
 // Heatmap data: 500 Points
 function getPoints() {
   return [
-  //{location: new google.maps.LatLng(37.782, -122.447), weight: 0.5},
 
   <?php
 // Performing SQL query
