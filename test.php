@@ -1,31 +1,8 @@
 <?php
-// Connecting, selecting database
-$dbconn = pg_connect("host=flowers.mines.edu dbname=csci403 user= password=")
+ // Connecting, selecting database
+$dbconn = pg_connect("host=flowers.mines.edu dbname=csci403 user=avanderm password=oldpassword")
     or die('Could not connect: ' . pg_last_error());
-
-// Performing SQL query
-$query = 'select latitude, longitude, AVG(tmin) from peittrei.wxdata A inner join peittrei.wxstations B on A.station_id = B.id where tmin > -9999 GROUP BY latitude, longitude';
-$result = pg_query($query) or die('Query failed: ' . pg_last_error());
-
-// Printing results in HTML
-//while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
-
-//        echo "{location: new google.maps.LatLng("+$line["latitude"]+","+$line["longitude"]+"), weight: "+$line["avg"]+"},";
-//}
-
-// Free resultset
-pg_free_result($result);
-
-// Closing connection
-pg_close($dbconn);
 ?>
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -77,13 +54,13 @@ pg_close($dbconn);
 var map, heatmap;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 13,
-    center: {lat: 37.775, lng: -122.434},
+    zoom: 7,
+    center: {lat: 39.74, lng: -104.99},
     mapTypeId: google.maps.MapTypeId.SATELLITE
   });
   heatmap = new google.maps.visualization.HeatmapLayer({
     data: getPoints(),
-    map: map
+    map: map,
   });
 }
 function toggleHeatmap() {
@@ -120,13 +97,8 @@ function getPoints() {
   //{location: new google.maps.LatLng(37.782, -122.447), weight: 0.5},
 
   <?php
-
-    // Connecting, selecting database
-$dbconn = pg_connect("host=flowers.mines.edu dbname=csci403 user= password=")
-    or die('Could not connect: ' . pg_last_error());
-
 // Performing SQL query
-$query = 'select latitude, longitude, AVG(tmin) from peittrei.wxdata A inner join peittrei.wxstations B on A.station_id = B.id where tmin > -9999 GROUP BY latitude, longitude';
+$query = 'select latitude, longitude, AVG(max) from peittrei.wxdata_avg where min > -9999 GROUP BY latitude, longitude';
 $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
 // Printing results in HTML
