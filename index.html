@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)http://localhost/index.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Heatmaps</title>
+    <style>
+    body {
+    overflow:hidden;
+}
+    iframe{
+ position: absolute;
+	top: 0px;
+	left: 0px;
+  
+		  height:100vh;
+		  width:100vw;
+    }
+    #sidebar{
+    position: absolute;
+	top: 50px;
+	left: 0px;
+	background-color: white;
+
+	width: 130px;
+    }
+    </style>
+  </head>
+
+  <body>
+
+  <iframe name="my_frame" src="./Heatmaps_files/map.html">
+  	</iframe>
+
+  <form target="my_frame" action="./Heatmaps_files/map.html" method="post" id="sidebar">
+   <fieldset>
+  <legend>Year</legend>
+  	<input type="checkbox" name="year[]" value="2006"> 2006<br><input type="checkbox" name="year[]" value="2007"> 2007<br><input type="checkbox" name="year[]" value="2008"> 2008<br><input type="checkbox" name="year[]" value="2009"> 2009<br><input type="checkbox" name="year[]" value="2010"> 2010<br><input type="checkbox" name="year[]" value="2011"> 2011<br><input type="checkbox" name="year[]" value="2012"> 2012<br><input type="checkbox" name="year[]" value="2013"> 2013<br><input type="checkbox" name="year[]" value="2014"> 2014<br>  	</fieldset>
+  	 <fieldset>
+  <legend>Season</legend>
+  <input type="checkbox" name="seasons[]" value="spring"> spring<br><input type="checkbox" name="seasons[]" value="summer"> summer<br><input type="checkbox" name="seasons[]" value="winter"> winter<br><input type="checkbox" name="seasons[]" value="fall"> fall<br>  </fieldset>
+
+
+  	<input type="submit" value="Submit">
+  	
+
+
+  
+
+
+
+</form></body></html>
